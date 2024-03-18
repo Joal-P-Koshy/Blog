@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { DummyPost } from '../data'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import {userContext} from '../Context/userContext'
 
 const Dashboard = () => {
-  const [posts, setPosts] = useState(DummyPost)
+  const [posts, setPosts] = useState(DummyPost);
+
+  const { currentUser } = useContext(userContext)
+  const token = currentUser?.token;
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/login')
+    }
+  },[])
   return (
     <>
       <section className="dashboard">

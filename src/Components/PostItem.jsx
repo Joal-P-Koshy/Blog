@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import PostAuthor from './PostAuthor'
 
 
-const PostItem = ({postId, thumbnail, category, title, description, authorId}) => {
+const PostItem = ({postId, thumbnail, category, title, description, authorId, createdAt}) => {
     const shortTitle = title.length > 20 ? title.substr(0, 20) + '...' : title;
     const shortDescription = description.length > 145 ? description.substr(0, 145) + '...' : description;
   return (
@@ -18,7 +18,7 @@ const PostItem = ({postId, thumbnail, category, title, description, authorId}) =
             </Link>
             <p>{shortDescription}</p>
             <div className="post-footer">
-                <PostAuthor/>
+                <PostAuthor authorId={authorId} createdAt={createdAt}/>
                 <Link to={`/posts/categories/${category}`} className='btn category'>{category}</Link>
             </div>
         </div>
