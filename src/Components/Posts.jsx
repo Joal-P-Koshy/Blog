@@ -24,8 +24,8 @@ const Posts = () => {
                     posts?.length > 0 ?
                         <div className="container posts-container">
                             {
-                                posts.map(({ id, thumbnail, category, title, description, authorId, createdAt }) =>
-                                    <PostItem key={id} postId={id} thumbnail={thumbnail} category={category} title={title} description={description} authorId={authorId} createdAt={createdAt}/>)
+                                posts.map(({ _id: id, thumbnail, category, title, description, creator, createdAt }) =>
+                                    <PostItem key={id} postId={id} thumbnail={thumbnail} category={category} title={title} description={description} authorId={creator} createdAt={createdAt}/>)
                             }
                         </div> :
                         <h2 className='center'>No post Found</h2>

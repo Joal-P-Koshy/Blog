@@ -29,7 +29,7 @@ const Hearder = () => {
           </Link>
 
           {currentUser?.id && isNavShowing &&<ul className="nav-menu">
-              <li><Link to='/profile/hhk' onClick={closeNavHandler}>Sample Name</Link></li>
+              <li><Link to='/profile/hhk' onClick={closeNavHandler}>{currentUser.name}</Link></li>
               <li><Link to='/create' onClick={closeNavHandler}>Create Post</Link></li>
               <li><Link to='/authors' onClick={closeNavHandler}>Authors</Link></li>
               <li><Link to='/logout' onClick={closeNavHandler}>Logout</Link></li>

@@ -12,6 +12,8 @@ const UserProfile = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [error, setError] = useState('');
+
 
   const { currentUser } = useContext(userContext)
   const token = currentUser?.token;
@@ -26,7 +28,7 @@ const UserProfile = () => {
     <>
       <section className="profile">
         <div className="container profile-container">
-          <Link to={`/myposts/fsvv`} className='btn'>My Posts</Link>
+          <Link to={`/myposts/${currentUser.id}`} className='btn'>My Posts</Link>
           <div className="profile-details">
             <div className="avatar-wrapper">
               <div className="profile-avatar">
@@ -40,10 +42,10 @@ const UserProfile = () => {
               <button className="profile-avatar-btn"><FaCheck /></button>
             </div>
 
-            <h1 className="">Sample name</h1>
+            <h1 className="">{currentUser.name}</h1>
 
             <form className="form profile-form">
-              <p className="form-error-message">This is an error message</p>
+              {error &&<p className="form-error-message">{error}</p>}
 
               <input type="text" placeholder='Full Name' value={name} onChange={e => setName(e.target.value)}/>
               <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}/>

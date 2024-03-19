@@ -274,11 +274,10 @@ footer {
     align-items: flex-start;
 }
 
-.post-author-avatar {
-    width: 2.5rem;
-    aspect-ratio: 1/1;
-    border-radius: var(--radius-2);
-    overflow: hidden;
+.post-author-avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 
@@ -400,12 +399,11 @@ textarea {
     box-shadow: 0 1rem 1.3rem rgba(0, 0, 0, 0.236);
 }
 
-.author-avatar {
-    width: 5rem;
-    aspect-ratio: 1/1;
+.author-avatar img {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 0.3rem solid var(--color-bg);
-    overflow: hidden;
 }
 
 .author-info p {
@@ -428,7 +426,7 @@ textarea {
 }
 
 .avatar-wrapper {
-    width: 15rem;
+    width: 10rem;
     aspect-ratio: 1/1;
     position: relative;
     margin-inline: auto;
@@ -438,7 +436,7 @@ textarea {
 .profile-avatar {
     height: 100%;
     border-radius: 50%;
-    border: 1rem solid var(--color-white);
+    border: 0.5rem solid var(--color-white);
     overflow: hidden;
 }
 
@@ -458,8 +456,8 @@ textarea {
     position: absolute;
     right: 2rem;
     bottom: 1.4rem;
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     display: grid;
     place-items: center;
     border-radius: 50%;

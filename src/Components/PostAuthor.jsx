@@ -1,18 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
-import Avatar from '../Images/avatar.png'
+import axios from 'axios'
+import ReactTimeAgo from 'react-time-ago'
+import TimeAgo from 'javascript-time-ago'
+
+import en from 'javascript-time-ago/locale/en.json'
+import ru from 'javascript-time-ago/locale/ru.json'
 
 
-const PostAuthor = () => {
+TimeAgo.addDefaultLocale(en);
+TimeAgo.addLocale(ru);
+
+const PostAuthor = ({ authorId, createdAt }) => {
+
+  const [author, setAuthor] = useState({})
+
+  useEffect(() => {
+    const getAuthor = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/users/${authorId}`)
+        setAuthor(response?.data);
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getAuthor();
+  }, [])
+
   return (
     <>
-      <Link to={`/posts/users/sample`} className='post-author'>
+      <Link to={`/posts/users/${authorId}`} className='post-author'>
         <div className="post-author-avatar">
-          <img src={Avatar} alt="" className="" />
+          <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${author?.avatar}`} alt="" />
         </div>
         <div className="post-author-details">
-          <h5 className="">By : Sample Author</h5>
-          <small>Just Now</small>
+          <h5 className="">By : {author?.name}</h5>
+          <small><ReactTimeAgo date={new Date(createdAt)} locale='en-US' /></small>
         </div>
       </Link>
     </>
